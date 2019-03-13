@@ -7,11 +7,11 @@ To use the action simply add the following lines to your `.github/main.workflow`
 
 ```hcl
 action "Lint Ansible Playbook" {
-  uses = "ansible/ansible-lint-action@master"
+  uses = "ansible/ansible-lint-action@v4.1.0"
 }
 ```
 
-N.B. Use `4.1.0` or any other valid tag, or branch, or commit SHA instead
+N.B. Use `v4.1.0` or any other valid tag, or branch, or commit SHA instead
 of `master` to pin the action to use a specific version.
 
 
