@@ -12,7 +12,7 @@ ACTION_PLAYBOOK_PATH="${GITHUB_WORKSPACE}/${ACTION_PLAYBOOK_NAME}"
 
 if [ ! -f "${ACTION_PLAYBOOK_PATH}" -a ! -d "${ACTION_PLAYBOOK_PATH}" ]; then
   >&2 echo "==> Can't find '${ACTION_PLAYBOOK_PATH}'.
-    Please ensure to set up ACTION_PLAYBOOK_PATH env var
+    Please ensure to set up ACTION_PLAYBOOK_NAME env var
     relative to the root of your project."
   exit 1
 fi
