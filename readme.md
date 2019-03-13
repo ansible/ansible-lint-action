@@ -11,7 +11,7 @@ action "Lint Ansible Playbook" {
 }
 ```
 
-N.B. Use `4.1.0` or any other valid tag, or branch, or commit SHA instead
+N.B. Use `v4.1.0` or any other valid tag, or branch, or commit SHA instead
 of `master` to pin the action to use a specific version.
 
 
