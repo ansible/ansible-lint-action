@@ -12,6 +12,6 @@ if [ -f "${ACTION_PLAYBOOK_PATH}" ]; then
   ansible-lint "${ACTION_PLAYBOOK_PATH}"
   echo
 else
-  echo "Can't find ${ACTION_PLAYBOOK_PATH}"
+  echo "Can't find '${ACTION_PLAYBOOK_PATH}'"
   exit 1
 fi
