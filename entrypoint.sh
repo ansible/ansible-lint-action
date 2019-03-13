@@ -19,5 +19,11 @@ fi
 
 >&2 echo
 >&2 echo "==> Linting ${ACTION_PLAYBOOK_PATH}…"
-ansible-lint "${ACTION_PLAYBOOK_PATH}"
+
+if [ -d "${ACTION_PLAYBOOK_PATH}" ]; then
+  ansible-lint `find "${ACTION_PLAYBOOK_PATH}" -type f -name playbook.yml`
+else
+  ansible-lint "${ACTION_PLAYBOOK_PATH}"
+fi
+
 >&2 echo
