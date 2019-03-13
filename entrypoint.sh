@@ -1,4 +1,5 @@
-#!/bin/sh
+#! /usr/bin/env bash
+
 set -eo pipefail
 
 ACTION_PLAYBOOK_NAME="${ACTION_PLAYBOOK_NAME:-playbook.yml}"
