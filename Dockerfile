@@ -3,7 +3,6 @@ FROM python:3.7-slim
 LABEL "maintainer"="Ansible by Red Hat <info@ansible.com>"
 LABEL "repository"="https://github.com/ansible/ansible-lint-action"
 LABEL "homepage"="https://github.com/ansible/ansible-lint-action"
-LABEL "version"="1.0.0"
 
 LABEL "com.github.actions.name"="ansible-lint"
 LABEL "com.github.actions.description"="Run Ansible Lint"
