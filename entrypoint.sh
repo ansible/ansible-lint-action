@@ -1,9 +1,12 @@
 #!/bin/sh
-set -e
+set -eo pipefail
+
+ACTION_PLAYBOOK_NAME="${ACTION_PLAYBOOK_NAME:-playbook.yml}"
+
+set -u
 
 cd "${GITHUB_WORKSPACE}"
 
-ACTION_PLAYBOOK_NAME="${ACTION_PLAYBOOK_NAME:-playbook.yml}"
 ACTION_PLAYBOOK_PATH="${GITHUB_WORKSPACE}/${ACTION_PLAYBOOK_NAME}"
 
 if [ -f "${ACTION_PLAYBOOK_PATH}" ]; then
