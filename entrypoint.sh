@@ -77,10 +77,11 @@ parse_args() {
 # env:
 #   [required] TARGETS : Files or directories (i.e., playbooks, tasks, handlers etc..) to be linted
 ansible::lint() {
-  : "${TARGETS?No TARGETS to check. Nothing to do.}"
+  : "${TARGETS?No targets to check. Nothing to do.}"
+  : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
+  pushd ${GITHUB_WORKSPACE}
 
   local opts=$(parse_args "$@" || exit 1)
-
   if [ "$opts" = "" ]; then
     ansible-lint -v --force-color ${TARGETS}
   else
