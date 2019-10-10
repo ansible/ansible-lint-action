@@ -33,7 +33,6 @@ inputs:
       Paths to ansible files (i.e., playbooks, tasks, handlers etc..)
       or directories containing any of the specified.
       NOTE: The directory traversal is not recursive
-    default: '.'
     required: true
 runs:
   using: 'docker'
