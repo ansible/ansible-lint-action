@@ -82,11 +82,8 @@ ansible::lint() {
   pushd ${GITHUB_WORKSPACE}
 
   local opts=$(parse_args "$@" || exit 1)
-  if [ "$opts" = "" ]; then
-    ansible-lint -v --force-color ${TARGETS}
-  else
-    ansible-lint -v --force-color $opts ${TARGETS}
-  fi
+
+  ansible-lint -v --force-color $opts ${TARGETS}
 }
 
 
