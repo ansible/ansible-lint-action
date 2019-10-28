@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-set -euo pipefail
+set -Eeuo pipefail
 set -x
 
 # Filter out arguments that are not available to this action
