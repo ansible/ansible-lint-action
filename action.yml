@@ -1,6 +1,6 @@
-name: 'Ansible Lint'
-description: 'Run Ansible Lint'
-author: 'Ansible by Red Hat <info@ansible.com>'
+name: Ansible Lint
+description: Run Ansible Lint
+author: Ansible by Red Hat <info@ansible.com>
 
 inputs: 
   args:
@@ -35,9 +35,9 @@ inputs:
       directory structure.
     required: true
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
   args:
-    - '${{ inputs.args }}'
+  - ${{ inputs.args }}
   env:
-    TARGETS: '${{ inputs.targets }}'
+    TARGETS: ${{ inputs.targets }}
