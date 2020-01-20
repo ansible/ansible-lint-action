@@ -10,7 +10,7 @@ For example:
 ```yaml
 name: Ansible Lint  # feel free to pick your own name
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -73,11 +73,7 @@ on:
     - release/v*
 ```
 
-or on various [events](https://help.github.com/en/articles/events-that-trigger-workflows):
-
-```yaml
-on: [push, pull_request]
-```
+or on various [events](https://help.github.com/en/articles/events-that-trigger-workflows)
 
 <br>
 
