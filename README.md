@@ -10,7 +10,7 @@ For example:
 ```yaml
 name: Ansible Lint  # feel free to pick your own name
 
-on: push
+on: [push, pull_request]
 
 jobs:
   build:
@@ -19,7 +19,8 @@ jobs:
 
     steps:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref
       uses: ansible/ansible-lint-action@master
@@ -28,6 +29,10 @@ jobs:
         # Paths to ansible files (i.e., playbooks, tasks, handlers etc..)
         # or valid Ansible directories according to the Ansible role
         # directory structure.
+        # If you want to lint multiple ansible files, use the following syntax
+        # targets: |
+        #   playbook_1.yml
+        #   playbook_2.yml
         targets: ""
         # [optional]
         # Arguments to be passed to the ansible-lint
@@ -68,11 +73,7 @@ on:
     - release/v*
 ```
 
-or on various [events](https://help.github.com/en/articles/events-that-trigger-workflows):
-
-```yaml
-on: [push, pull_request]
-```
+or on various [events](https://help.github.com/en/articles/events-that-trigger-workflows)
 
 <br>
 
