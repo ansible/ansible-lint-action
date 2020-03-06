@@ -82,5 +82,5 @@ The Dockerfile and associated scripts and documentation in this project are rele
 
 
 ## Credits
-The initial GitHub action has been created by [Stefan Stölzle](/stoe) at
+The initial GitHub action has been created by [Stefan Stölzle](https://github.com/stoe) at
 [stoe/actions](https://github.com/stoe/actions).
