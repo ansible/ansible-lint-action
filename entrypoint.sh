@@ -91,5 +91,5 @@ args=("$@")
 
 if [ "$0" = "$BASH_SOURCE" ] ; then
   >&2 echo -E "\nRunning Ansible Lint...\n"
-  ansible::lint ${args[@]}
+  ansible::lint "${args[@]}"
 fi
