@@ -96,12 +96,7 @@ ansible::lint() {
   ansible-lint -v --force-color "$opts" "${TARGETS}"
 }
 
-
-
 args=("$@")
-
-echo "ARGS: $args"
-echo "INPUT $0"
 
 if [ "$0" = "${BASH_SOURCE[*]}" ] ; then
   >&2 echo -E "\nRunning Ansible Lint...\n"
