@@ -54,7 +54,7 @@ parse_args() {
         shift
         break
         ;;
-      -*|--*=) # unsupported flags
+      -*) # unsupported flags
         >&2 echo "ERROR: Unsupported flag: '$1'"
         exit 1
         ;;
