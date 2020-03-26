@@ -79,11 +79,11 @@ parse_args() {
 ansible::lint() {
   : "${TARGETS?No targets to check. Nothing to do.}"
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
-  pushd ${GITHUB_WORKSPACE}
+  pushd "${GITHUB_WORKSPACE}"
 
   local opts=$(parse_args "$@" || exit 1)
 
-  ansible-lint -v --force-color $opts ${TARGETS}
+  ansible-lint -v --force-color "$opts" "${TARGETS}"
 }
 
 
