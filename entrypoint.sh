@@ -81,7 +81,8 @@ ansible::lint() {
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
   pushd "${GITHUB_WORKSPACE}"
 
-  local opts=$(parse_args "$@" || exit 1)
+  local opts
+  opts=$(parse_args "$@" || exit 1)
 
   ansible-lint -v --force-color "$opts" "${TARGETS}"
 }
@@ -89,7 +90,7 @@ ansible::lint() {
 
 args=("$@")
 
-if [ "$0" = "$BASH_SOURCE" ] ; then
+if [ "$0" = "${BASH_SOURCE[*]}" ] ; then
   >&2 echo -E "\nRunning Ansible Lint...\n"
   ansible::lint "${args[@]}"
 fi
