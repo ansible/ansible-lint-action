@@ -3,6 +3,9 @@
 set -Eeuo pipefail
 set -x
 
+# Setting default ansible-lint version if none is specified.
+DEFAULT_VERSION=4.2.0
+
 # Filter out arguments that are not available to this action
 # args:
 #   $@: Arguments to be filtered
@@ -71,6 +74,10 @@ parse_args() {
   return 0
 }
 
+install_ansible_lint() {
+  pip install ansible-lint=="$1" || exit 1
+}
+
 # Generates client.
 # args:
 #   $@: additional options
@@ -79,8 +86,10 @@ parse_args() {
 ansible::lint() {
   : "${TARGETS?No targets to check. Nothing to do.}"
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
+  : "${VERSION?No version set. Default: ${DEFAULT_VERSION}}"
   pushd "${GITHUB_WORKSPACE}"
 
+  install_ansible_lint "${VERSION:-${DEFAULT_VERSION}}"
   local opts
   opts=$(parse_args "$@" || exit 1)
 
@@ -88,7 +97,11 @@ ansible::lint() {
 }
 
 
+
 args=("$@")
+
+echo "ARGS: $args"
+echo "INPUT $0"
 
 if [ "$0" = "${BASH_SOURCE[*]}" ] ; then
   >&2 echo -E "\nRunning Ansible Lint...\n"

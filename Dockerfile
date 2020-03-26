@@ -9,7 +9,5 @@ LABEL "com.github.actions.description"="Run Ansible Lint"
 LABEL "com.github.actions.icon"="activity"
 LABEL "com.github.actions.color"="gray-dark"
 
-RUN pip install ansible-lint
-
-ADD entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

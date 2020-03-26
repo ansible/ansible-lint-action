@@ -35,6 +35,10 @@ jobs:
         #   playbook_2.yml
         targets: ""
         # [optional]
+        # If you wish to pin the version of ansible-lint being used you can set the version explicitly
+        # Default version will be used if not set: v4.2.0
+        version: ""
+        # [optional]
         # Arguments to be passed to the ansible-lint
 
         # Options:
