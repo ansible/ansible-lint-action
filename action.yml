@@ -46,3 +46,4 @@ runs:
     - ${{ inputs.args }}
   env:
     TARGETS: ${{ inputs.targets }}
+    VERSION: ${{ inputs.version }}
