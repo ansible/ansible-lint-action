@@ -2,7 +2,7 @@ name: Ansible Lint
 description: Run Ansible Lint
 author: Ansible by Red Hat <info@ansible.com>
 
-inputs: 
+inputs:
   args:
     description: |
       Arguments to be passed to the ansible-lint
