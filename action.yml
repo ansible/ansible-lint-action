@@ -2,7 +2,7 @@ name: Ansible Lint
 description: Run Ansible Lint
 author: Ansible by Red Hat <info@ansible.com>
 
-inputs: 
+inputs:
   args:
     description: |
       Arguments to be passed to the ansible-lint
@@ -34,10 +34,15 @@ inputs:
       or valid Ansible directories according to the Ansible role
       directory structure.
     required: true
+  version:
+    description: |
+      Version of ansible-lint that should be used. This allows to pin to a target
+      version in order to maintain consistency with local development.
+    required: false
 runs:
   using: docker
   image: Dockerfile
   args:
-  - ${{ inputs.args }}
+    - ${{ inputs.args }}
   env:
     TARGETS: ${{ inputs.targets }}
