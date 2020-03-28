@@ -86,7 +86,6 @@ install_ansible_lint() {
 ansible::lint() {
   : "${TARGETS?No targets to check. Nothing to do.}"
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
-  : "${VERSION?No version set. Default: ${DEFAULT_VERSION}}"
   pushd "${GITHUB_WORKSPACE}"
 
   install_ansible_lint "${VERSION:-${DEFAULT_VERSION}}"
