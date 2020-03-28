@@ -91,13 +91,7 @@ ansible::lint() {
   install_ansible_lint "${VERSION:-${DEFAULT_VERSION}}"
   local opts
   opts=$(parse_args "$@" || exit 1)
-  if [[ -z "$opts" ]]; then
-    # If no opts are provided an empty string causes ansible-lint to crash.
-    ansible-lint -v --force-color "${TARGETS}"
-  else
-    ansible-lint -v --force-color "$opts" "${TARGETS}"
-  fi
-  
+  ansible-lint -v --force-color $opts ${TARGETS}
 }
 
 args=("$@")

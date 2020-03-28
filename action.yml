@@ -43,7 +43,7 @@ runs:
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.args }}
+  - ${{ inputs.args }}
   env:
     TARGETS: ${{ inputs.targets }}
     VERSION: ${{ inputs.targets }}
