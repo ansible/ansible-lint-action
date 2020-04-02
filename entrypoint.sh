@@ -75,7 +75,7 @@ parse_args() {
 }
 
 install_ansible_lint() {
-  pip install ansible-lint=="$1" || exit 1
+  pip install ansible-lint=="${VERSION:-${DEFAULT_VERSION}}" || exit 1
 }
 
 # Generates client.
@@ -88,7 +88,7 @@ ansible::lint() {
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
   pushd "${GITHUB_WORKSPACE}"
 
-  install_ansible_lint "${VERSION:-${DEFAULT_VERSION}}"
+  install_ansible_lint
   local opts
   opts=$(parse_args "$@" || exit 1)
   ansible-lint -v --force-color $opts ${TARGETS}
