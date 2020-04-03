@@ -88,6 +88,7 @@ ansible::lint() {
   override_python_packages
   local opts
   opts=$(parse_args "$@" || exit 1)
+
   ansible-lint -v --force-color "$opts" "${TARGETS}"
 }
 
