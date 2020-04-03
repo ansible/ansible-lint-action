@@ -92,6 +92,7 @@ ansible::lint() {
   ansible-lint -v --force-color "$opts" "${TARGETS}"
 }
 
+
 args=("$@")
 
 if [ "$0" = "${BASH_SOURCE[*]}" ] ; then
