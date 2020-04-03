@@ -35,9 +35,11 @@ jobs:
         #   playbook_2.yml
         targets: ""
         # [optional]
-        # If you wish to pin the version of ansible-lint being used you can set the version explicitly
-        # Default version will be used if not set: v4.2.0
-        version: ""
+        # Arguments to override a package and its version to be set explicitly.
+        # Must follow the example syntax.
+        override-dep: |
+          ansible==2.10
+          ansible-lint==4.2.0
         # [optional]
         # Arguments to be passed to the ansible-lint
 

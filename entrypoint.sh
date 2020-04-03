@@ -74,8 +74,12 @@ parse_args() {
   return 0
 }
 
-install_ansible_lint() {
-  pip install ansible-lint=="${VERSION:-${DEFAULT_VERSION}}" || exit 1
+override_python_packages() {
+  echo "Overrides: ${OVERRIDE}"
+  for package in ${OVERRIDE}
+  do
+    pip install "$package" || exit 1
+  done
 }
 
 # Generates client.
@@ -88,7 +92,7 @@ ansible::lint() {
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
   pushd "${GITHUB_WORKSPACE}"
 
-  install_ansible_lint
+  override_python_packages
   local opts
   opts=$(parse_args "$@" || exit 1)
   ansible-lint -v --force-color $opts ${TARGETS}

@@ -34,10 +34,10 @@ inputs:
       or valid Ansible directories according to the Ansible role
       directory structure.
     required: true
-  version:
+  override-deps:
     description: |
-      Version of ansible-lint that should be used. This allows to pin to a target
-      version in order to maintain consistency with local development.
+      override-deps allows pinning pip packages and there versions. This allows to pin to a target
+      package version in order to maintain consistency with local development.
     required: false
 runs:
   using: docker
@@ -46,4 +46,4 @@ runs:
   - ${{ inputs.args }}
   env:
     TARGETS: ${{ inputs.targets }}
-    VERSION: ${{ inputs.version }}
+    OVERRIDE: ${{ inputs.override-deps }}
