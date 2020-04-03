@@ -72,7 +72,7 @@ parse_args() {
 }
 
 override_python_packages() {
-  [[ -n ${OVERRIDE} ]] && pip install "${OVERRIDE}"
+  [[ -n ${OVERRIDE} ]] && pip install "${OVERRIDE}" && pip check
 }
 
 # Generates client.
