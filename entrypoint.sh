@@ -72,11 +72,7 @@ parse_args() {
 }
 
 override_python_packages() {
-  echo "Overrides: ${OVERRIDE}"
-  for package in ${OVERRIDE}
-  do
-    pip install "$package" || exit 1
-  done
+  [[ -n ${OVERRIDE} ]] && pip install "${OVERRIDE}"
 }
 
 # Generates client.
