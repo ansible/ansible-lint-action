@@ -3,9 +3,6 @@
 set -Eeuo pipefail
 set -x
 
-# Setting default ansible-lint version if none is specified.
-DEFAULT_VERSION=4.2.0
-
 # Filter out arguments that are not available to this action
 # args:
 #   $@: Arguments to be filtered
