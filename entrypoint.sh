@@ -73,7 +73,7 @@ parse_args() {
 
 override_python_packages() {
   [[ -n ${OVERRIDE} ]] && pip install "${OVERRIDE}" && pip check
-  echo "Completed installing override dependencies..."
+  >&2 echo "Completed installing override dependencies..."
 }
 
 # Generates client.
