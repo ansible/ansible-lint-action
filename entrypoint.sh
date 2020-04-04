@@ -71,6 +71,11 @@ parse_args() {
   return 0
 }
 
+override_python_packages() {
+  [[ -n ${OVERRIDE} ]] && pip install "${OVERRIDE}" && pip check
+  >&2 echo "Completed installing override dependencies..."
+}
+
 # Generates client.
 # args:
 #   $@: additional options
@@ -81,6 +86,7 @@ ansible::lint() {
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
   pushd "${GITHUB_WORKSPACE}"
 
+  override_python_packages
   local opts
   opts=$(parse_args "$@" || exit 1)
 
