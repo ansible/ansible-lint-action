@@ -90,7 +90,10 @@ ansible::lint() {
   local opts
   opts=$(parse_args $@ || exit 1)
 
+  # Enable recursive glob patterns, such as '**/*.yml'.
+  shopt -s globstar
   ansible-lint -v --force-color $opts ${TARGETS}
+  shopt -u globstar
 }
 
 
