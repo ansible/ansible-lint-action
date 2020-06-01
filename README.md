@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/ansible/ansible-lint-action) 
+
 # Ansible Lint for GitHub Action
 This action allows you to run `ansible-lint` with no additional options.
 
