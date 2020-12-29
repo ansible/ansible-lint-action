@@ -72,9 +72,12 @@ parse_args() {
 }
 
 override_python_packages() {
-  >&2 echo "${OVERRIDE}"
-  >&2 echo "${OVERRIDE-}"
-  [[ -n "${OVERRIDE-}" ]] && pip install ${OVERRIDE} && pip check
+  if [[ "$OVERRIDE" == *"ansible-lint"* ]]; then
+    echo "ansible-lint specified."
+  else
+    OVERRIDE="$OVERRIDE ansible-lint"
+  fi
+  pip install ${OVERRIDE} && pip check
   >&2 echo "Completed installing override dependencies..."
 }
 
