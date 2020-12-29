@@ -12,7 +12,7 @@ LABEL "com.github.actions.color"="gray-dark"
 # Install git (required by ansible-lint)
 RUN set -ex && apt-get update && apt-get -q install -y -V git && rm -rf /var/lib/apt/lists/*
 
-RUN pip install ansible-lint
+RUN pip install ansible==2.9.6 ansible-lint
 
 COPY entrypoint.sh /entrypoint.sh
 
