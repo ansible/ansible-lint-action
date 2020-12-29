@@ -72,6 +72,8 @@ parse_args() {
 }
 
 override_python_packages() {
+  >&2 echo "${OVERRIDE}"
+  >&2 echo "${OVERRIDE-}"
   [[ -n "${OVERRIDE-}" ]] && pip install ${OVERRIDE} && pip check
   >&2 echo "Completed installing override dependencies..."
 }
