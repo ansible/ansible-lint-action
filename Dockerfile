@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM python:3.9-slim
 
 LABEL "maintainer"="Ansible by Red Hat <info@ansible.com>"
 LABEL "repository"="https://github.com/ansible/ansible-lint-action"
@@ -11,8 +11,6 @@ LABEL "com.github.actions.color"="gray-dark"
 
 # Install git (required by ansible-lint)
 RUN set -ex && apt-get update && apt-get -q install -y -V git && rm -rf /var/lib/apt/lists/*
-
-RUN pip install 'ansible-lint<5'
 
 COPY entrypoint.sh /entrypoint.sh
 
