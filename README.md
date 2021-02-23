@@ -38,8 +38,8 @@ jobs:
         # Arguments to override a package and its version to be set explicitly.
         # Must follow the example syntax.
         override-deps: |
-          ansible==2.9
-          ansible-lint==4.2.0
+          ansible==2.10
+          ansible-lint==5.0.2
         # [optional]
         # Arguments to be passed to the ansible-lint
 
@@ -66,7 +66,7 @@ jobs:
 
 ```
 
-> TIP: N.B. Use `ansible/ansible-lint-action@v4.1.0` or any other valid tag, or branch, or commit SHA instead of `v4.1.0` to pin the action to use a specific version.
+> TIP: N.B. Use `ansible/ansible-lint-action@v5.0.2` or any other valid tag, or branch, or commit SHA instead of `v5.0.2` to pin the action to use a specific version.
 
 Alternatively, you can run the ansible lint only on certain branches:
 
