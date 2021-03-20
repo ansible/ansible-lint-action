@@ -72,7 +72,7 @@ parse_args() {
 }
 
 override_python_packages() {
-  [[ -n "${OVERRIDE-}" ]] && pip install ${OVERRIDE} && pip check
+  [[ -n "${INPUT_OVERRIDE_DEPS-}" ]] && pip install ${INPUT_OVERRIDE_DEPS} && pip check
   >&2 echo "Completed installing override dependencies..."
 }
 
@@ -80,9 +80,8 @@ override_python_packages() {
 # args:
 #   $@: additional options
 # env:
-#   [required] TARGETS : Files or directories (i.e., playbooks, tasks, handlers etc..) to be linted
+#   INPUT_TARGETS : Files or directories (i.e., playbooks, tasks, handlers etc..) to be linted
 ansible::lint() {
-  : "${TARGETS?No targets to check. Nothing to do.}"
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
   pushd "${GITHUB_WORKSPACE}"
 
@@ -92,12 +91,15 @@ ansible::lint() {
 
   # Enable recursive glob patterns, such as '**/*.yml'.
   shopt -s globstar
-  ansible-lint -v --force-color $opts ${TARGETS}
+  ansible-lint -v --force-color $opts ${INPUT_TARGETS=}
   shopt -u globstar
 }
 
-
-args=("$@")
+if [ -n "${INPUT_ARGS-}" ]; then
+    IFS=' ' read -r -a args <<< "$INPUT_ARGS"
+else
+    args=()
+fi
 
 if [ "$0" = "${BASH_SOURCE[*]}" ] ; then
   >&2 echo -E "\nRunning Ansible Lint...\n"

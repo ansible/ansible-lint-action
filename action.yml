@@ -43,8 +43,3 @@ inputs:
 runs:
   using: docker
   image: Dockerfile
-  args:
-  - ${{ inputs.args }}
-  env:
-    TARGETS: ${{ inputs.targets }}
-    OVERRIDE: ${{ inputs.override-deps }}
