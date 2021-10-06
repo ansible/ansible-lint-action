@@ -92,6 +92,9 @@ ansible::lint() {
 
   # Enable recursive glob patterns, such as '**/*.yml'.
   shopt -s globstar
+  echo "Installing collections..."
+  ansible-galaxy collection install -r collections/requirements.yml -p collections --force
+  echo "Running ansible-lint..."
   ansible-lint -v --force-color $opts ${TARGETS}
   shopt -u globstar
 }
