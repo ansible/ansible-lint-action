@@ -21,7 +21,7 @@ inputs:
         -t TAGS               only check rules whose id/tags match these values
         -x SKIP_LIST          only check rules whose id/tags do not match these
                               values
-        --nocolor             disable colored output
+        --no-color            disable colored output
         --exclude=EXCLUDE_PATHS
                               path to directories or files to skip. This option is
                               repeatable.
