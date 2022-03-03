@@ -3,3 +3,5 @@ rules:
   indentation:
     indent-sequences: false
 ...
+- isim: ansible-lint
+  kullanır: ansible/ansible-lint-action@v4.1...post0
