@@ -1,0 +1,88 @@
+---
+name: tox
+
+on:
+  create: # is used for publishing to PyPI and TestPyPI
+    tags: # any tag regardless of its name, no branches
+      - "**"
+  push: # only publishes pushes to the main branch to TestPyPI
+    branches: # any integration branch but not tag
+      - "main"
+  pull_request:
+  release:
+    types:
+      - published # It seems that you can publish directly without creating
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  linters:
+    name: >-
+      ${{ matrix.env.TOXENV }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.10"
+        os:
+          - ubuntu-20.04
+        env:
+          - TOXENV: lint
+    env:
+      TOX_PARALLEL_NO_SPINNER: 1
+      FORCE_COLOR: 1
+
+    steps:
+      - name: Check out src from Git
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # needed by setuptools-scm
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install tox
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade tox
+      - name: Log installed dists
+        run: >-
+          python -m pip freeze --all
+      - name: >-
+          Initialize tox envs
+        run: >-
+          python -m
+          tox
+          --parallel auto
+          --parallel-live
+          --notest
+          --skip-missing-interpreters false
+          -vv
+        env: ${{ matrix.env }}
+      - name: Test with tox
+        run: |
+          python -m tox --parallel auto --parallel-live
+        env: ${{ matrix.env }}
+      - name: Archive logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs.zip
+          path: .tox/**/log/
+
+  check: # This job does nothing and is only used for the branch protection
+    if: always()
+
+    needs:
+      - linters
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
