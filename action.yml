@@ -5,46 +5,17 @@ author: Ansible by Red Hat <info@ansible.com>
 inputs:
   args:
     description: |
-      Arguments to be passed to the ansible-lint
-
-      Options:
-        -q                    quieter, although not silent output
-        -p                    parseable output in the format of pep8
-        --parseable-severity  parseable output including severity of rule
-        -r RULESDIR           specify one or more rules directories using one or
-                              more -r arguments. Any -r flags override the default
-                              rules in ansiblelint/rules, unless -R is also used.
-        -R                    Use default rules in ansiblelint/rules in addition to
-                              any extra
-                              rules directories specified with -r. There is no need
-                              to specify this if no -r flags are used
-        -t TAGS               only check rules whose id/tags match these values
-        -x SKIP_LIST          only check rules whose id/tags do not match these
-                              values
-        --nocolor             disable colored output
-        --exclude=EXCLUDE_PATHS
-                              path to directories or files to skip. This option is
-                              repeatable.
-        -c C                  Specify configuration file to use. Defaults to ".ansible-lint"
-
+      Arguments to be passed to the ansible-lint.
     required: false
-  targets:
-    description: |
-      Paths to ansible files (i.e., playbooks, tasks, handlers etc..)
-      or valid Ansible directories according to the Ansible role
-      directory structure.
-    required: true
-  override-deps:
-    default: ""
-    description: |
-      override-deps allows pinning pip packages and there versions. This allows to pin to a target
-      package version in order to maintain consistency with local development.
-    required: false
+    default: "."
 runs:
   using: docker
-  image: Dockerfile
-  args:
-    - ${{ inputs.args }}
+  image: quay.io/ansible/creator-ee:v0.3.1
+  entrypoint: /usr/local/bin/ansible-lint
   env:
-    TARGETS: ${{ inputs.targets }}
-    OVERRIDE: ${{ inputs.override-deps }}
+    # These tell ansible-lint to use github compatible annotation format:
+    GITHUB_ACTIONS: "true"
+    GITHUB_WORKFLOW: "{{ github.workflow.name }}"
+  args:
+    - -vvv
+    - ${{ inputs.args }}
