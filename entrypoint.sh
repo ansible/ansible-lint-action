@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 
+# cspell: ignore Eeuo
 set -Eeuo pipefail
 set -x
 

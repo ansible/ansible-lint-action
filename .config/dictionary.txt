@@ -1,0 +1,20 @@
+CTYPE
+REQPASS
+RULESDIR
+TOXENV
+ansiblelint
+autofix
+autoupdate
+codespell
+commitlint
+deps
+dists
+minversion
+nocolor
+notest
+parseable
+setuptools
+
+# Names
+stoe
+Stölzle
