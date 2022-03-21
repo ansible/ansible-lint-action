@@ -1,0 +1,16 @@
+---
+name: release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  move-tags:
+    name: Move tags
+    runs-on: ubuntu-latest
+    steps:
+      # cspell: ignore kellyselden
+      - uses: kellyselden/move-semver-tags-action@v3
+        with:
+          copy-annotations: true
