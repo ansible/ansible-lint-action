@@ -1,0 +1,12 @@
+name: self-test
+on:
+  - push
+  - pull_request
+
+jobs:
+  self-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Self test
+        uses: ./
