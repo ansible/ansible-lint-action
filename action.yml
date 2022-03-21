@@ -1,7 +1,9 @@
 name: Ansible Lint
 description: Run Ansible Lint
 author: Ansible by Red Hat <info@ansible.com>
-
+branding:
+  icon: shield
+  color: red
 inputs:
   args:
     description: |
