@@ -35,7 +35,7 @@ inputs:
       directory structure.
     required: true
   override-deps:
-    default: ''
+    default: ""
     description: |
       override-deps allows pinning pip packages and there versions. This allows to pin to a target
       package version in order to maintain consistency with local development.
