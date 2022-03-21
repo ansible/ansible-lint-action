@@ -16,6 +16,13 @@ repos:
         additional_dependencies:
           - prettier
           - prettier-plugin-toml
+  - repo: https://github.com/streetsidesoftware/cspell-cli
+    rev: v5.8.4
+    hooks:
+      - id: cspell
+        # entry: codespell --relative
+        args: [--relative, --no-progress, --no-summary]
+        name: Spell check with cspell
   - repo: https://github.com/sirosen/check-jsonschema
     rev: 0.14.0
     hooks:
