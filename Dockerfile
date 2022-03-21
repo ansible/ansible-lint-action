@@ -1,4 +1,5 @@
-FROM python:3.8-slim
+# creator-ee v0.3.1 -> ansible-lint v6.0.1
+FROM quay.io/ansible/creator-ee:v0.3.1
 
 LABEL "maintainer"="Ansible by Red Hat <info@ansible.com>"
 LABEL "repository"="https://github.com/ansible/ansible-lint-action"
@@ -8,11 +9,6 @@ LABEL "com.github.actions.name"="ansible-lint"
 LABEL "com.github.actions.description"="Run Ansible Lint"
 LABEL "com.github.actions.icon"="activity"
 LABEL "com.github.actions.color"="gray-dark"
-
-# Install git (required by ansible-lint)
-RUN set -ex && apt-get update && apt-get -q install -y -V git && rm -rf /var/lib/apt/lists/*
-
-RUN pip install 'ansible-lint<5'
 
 COPY entrypoint.sh /entrypoint.sh
 
