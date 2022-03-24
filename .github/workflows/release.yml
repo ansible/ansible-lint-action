@@ -10,6 +10,11 @@ jobs:
     name: Move tags
     runs-on: ubuntu-latest
     steps:
+      - name: Check out src from Git
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       # cspell: ignore kellyselden
       - uses: kellyselden/move-semver-tags-action@v3
         with:
