@@ -23,7 +23,7 @@ jobs:
 
       - name: Lint Ansible Playbook
         # replace `main` with any valid ref, or tags like `v6`
-        uses: ansible/ansible-lint-action@main
+        uses: ansible-community/ansible-lint-action@main
         # optional:
         with:
           args: "" # args to pass to ansible-lint command
