@@ -5,11 +5,20 @@ branding:
   icon: shield
   color: red
 inputs:
-  args:
-    description: |
-      Arguments to be passed to the ansible-lint.
+  path:
+    description: >
+      Specific path to lint instead of the default `.`. Multiple arguments are
+      not supported and you will need to alter linter configuration to
+      accommodate other use cases.
     required: false
     default: "."
+  args:
+    description: deprecated
+    deprecationMessage: >
+      Arbitrary args are no longer accepted, please use path instead and
+      linter own configuration file to change its behavior.
+    required: false
+    default: ""
 runs:
   using: docker
   image: docker://quay.io/ansible/creator-ee:v0.4.1
@@ -20,4 +29,4 @@ runs:
     GITHUB_WORKFLOW: "{{ github.workflow.name }}"
   args:
     - -vvv
-    - ${{ inputs.args }}
+    - ${{ inputs.path }}
