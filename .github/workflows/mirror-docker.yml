@@ -1,0 +1,47 @@
+---
+name: Periodic Docker image sync to docker.io and ghcr.io
+
+on:
+  workflow_dispatch:
+  # schedule:
+    # At the start of every hour
+    # - cron: '0 * * * *'
+
+jobs:
+  mirror-images:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set image variables
+        run: |
+          echo "QUAY_IMAGE_NAME=$(grep -Po '(?<=docker://quay.io/).*(?=:.*$)' action.yml)" >> $GITHUB_ENV
+          echo "QUAY_IMAGE_TAG=$(grep -Po "(?<=docker://quay.io/$QUAY_IMAGE_NAME:).*$" action.yml)" >> $GITHUB_ENV
+
+      - name: Fetch quay.io image
+        run: docker pull "${QUAY_IMAGE_NAME}:${QUAY_IMAGE_TAG}"
+
+      # To authenticate against Docker Hub it's strongly recommended
+      # to create a personal access token as an alternative to your password
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Tag and push image to Docker Hub
+        run: |
+          docker tag "${QUAY_IMAGE_NAME}:${QUAY_IMAGE_TAG}" "docker.io/${QUAY_IMAGE_NAME}:${QUAY_IMAGE_TAG}"
+          docker push "docker.io/${QUAY_IMAGE_NAME}:${QUAY_IMAGE_TAG}"
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Tag and push image to GitHub Container Registry
+        run: |
+          docker tag "${QUAY_IMAGE_NAME}:${QUAY_IMAGE_TAG}" "ghcr.io/${QUAY_IMAGE_NAME}:${QUAY_IMAGE_TAG}"
+          docker push "ghcr.io/${QUAY_IMAGE_NAME}:${QUAY_IMAGE_TAG}"
