@@ -1,21 +1,14 @@
 ---
+# https://github.com/marketplace/actions/actions-tagger
 name: release
 
-on:
+"on":
   release:
-    types: [published]
+    types: [published, edited]
+  workflow_dispatch:
 
 jobs:
-  move-tags:
-    name: Move tags
-    runs-on: ubuntu-latest
+  actions-tagger:
+    runs-on: windows-latest
     steps:
-      - name: Check out src from Git
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      # cspell: ignore kellyselden
-      - uses: kellyselden/move-semver-tags-action@v3
-        with:
-          copy-annotations: true
+      - uses: Actions-R-Us/actions-tagger@latest
