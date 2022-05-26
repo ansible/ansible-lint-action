@@ -11,7 +11,9 @@ inputs:
       not supported and you will need to alter linter configuration to
       accommodate other use cases.
     required: false
-    default: "."
+    # that default just a placeholder workaround for no arguments use-case as
+    # feeding "." or empty string to ansible-lint makes it believe it is a role
+    default: --show-relpath
   args:
     description: deprecated
     deprecationMessage: >
