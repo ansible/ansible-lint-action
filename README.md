@@ -27,6 +27,8 @@ jobs:
         # optional:
         # with:
         #   path: "playbooks/"  # <-- only one value is allowed
+        # env:
+        #   GITHUB_SARIF: "ansiblelint-results.sarif" # <-- if need a sarif output file
 ```
 
 Due to limitation on how GitHub Actions are processing arguments, we do not
