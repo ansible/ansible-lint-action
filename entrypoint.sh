@@ -2,11 +2,12 @@
 
 verbosity_level="${1}"
 lintable_path="${2}"
+sarif_output_file="${3}"
 
-# if env variable GITHUB_SARIF is set
-# redirect the SARIF output into the file name specified by the env variable
-if [[ -z "${GITHUB_SARIF}" ]]; then
+# if the argument sarif_output_file is set
+# redirect the SARIF output into the specified file name
+if [[ -z $output_file ]]; then
   ansible-lint $verbosity_level $lintable_path;
 else
-  ansible-lint $verbosity_level $lintable_path -f sarif > "$GITHUB_SARIF";
+  ansible-lint $verbosity_level $lintable_path -f sarif > ${output_file};
 fi

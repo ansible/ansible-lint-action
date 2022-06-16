@@ -14,6 +14,11 @@ inputs:
     # That default is just a placeholder workaround for no arguments use-case
     # Feeding "." or empty string to ansible-lint makes it believe it is a role
     default: --show-relpath
+  sarif_file:
+    description: >
+      Specific a Sarif output file name, the action will generate results in Sarif
+      format that could be used to upload to GHAS.
+    required: false
   args:
     description: deprecated
     deprecationMessage: >
@@ -31,3 +36,4 @@ runs:
   args:
     - -vvv
     - ${{ inputs.path }}
+    - ${{ inputs.sarif_file }}
