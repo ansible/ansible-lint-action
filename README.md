@@ -23,7 +23,7 @@ jobs:
 
       - name: Run ansible-lint
         # replace `main` with any valid ref, or tags like `v6`
-        uses: ansible-community/ansible-lint-action@main
+        uses: ansible/ansible-lint-action@main
         # optional:
         # with:
         #   path: "playbooks/"  # <-- only one value is allowed
