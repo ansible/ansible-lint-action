@@ -19,7 +19,7 @@ jobs:
 
     steps:
       # Important: This sets up your GITHUB_WORKSPACE environment variable
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Run ansible-lint
         # replace `main` with any valid ref, or tags like `v6`
