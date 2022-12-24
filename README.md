@@ -29,7 +29,7 @@ jobs:
         #   path: "playbooks/"  # <-- only one value is allowed
 ```
 
-Due to limitation on how GitHub Actions are processing arguments, we do not
+Due to limitations on how GitHub Actions are processing arguments, we do not
 plan to provide extra options. You will have to make use of [ansible-lint own configuration file](https://ansible-lint.readthedocs.io/en/latest/configuring/)
 for altering its behavior.
 
