@@ -30,5 +30,4 @@ runs:
     GITHUB_ACTIONS: "true"
     GITHUB_WORKFLOW: "{{ github.workflow.name }}"
   args:
-    - -vvv
     - ${{ inputs.path }}
