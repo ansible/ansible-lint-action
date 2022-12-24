@@ -19,17 +19,17 @@ jobs:
 
     steps:
       # Important: This sets up your GITHUB_WORKSPACE environment variable
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Run ansible-lint
         # replace `main` with any valid ref, or tags like `v6`
-        uses: ansible-community/ansible-lint-action@main
+        uses: ansible/ansible-lint-action@main
         # optional:
         # with:
         #   path: "playbooks/"  # <-- only one value is allowed
 ```
 
-Due to limitation on how GitHub Actions are processing arguments, we do not
+Due to limitations on how GitHub Actions are processing arguments, we do not
 plan to provide extra options. You will have to make use of [ansible-lint own configuration file](https://ansible-lint.readthedocs.io/en/latest/configuring/)
 for altering its behavior.
 
