@@ -20,6 +20,8 @@ jobs:
     steps:
       # Important: This sets up your GITHUB_WORKSPACE environment variable
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # needed for progressive mode to work
 
       - name: Run ansible-lint
         # replace `main` with any valid ref, or tags like `v6`
