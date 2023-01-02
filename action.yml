@@ -23,7 +23,7 @@ inputs:
     default: ""
 runs:
   using: docker
-  image: docker://ghcr.io/ansible/creator-ee:v0.12.0
+  image: docker://ghcr.io/ansible/creator-ee:v0.12.2
   entrypoint: /usr/local/bin/ansible-lint
   env:
     # These tell ansible-lint to use github compatible annotation format:
