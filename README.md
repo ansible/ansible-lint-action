@@ -15,6 +15,7 @@ on: [push, pull_request]
 
 jobs:
   build:
+    name: Ansible Lint # Naming the build is important to use it as a status check
     runs-on: ubuntu-latest
 
     steps:
