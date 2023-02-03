@@ -10,11 +10,12 @@ To use the action simply create an `ansible-lint.yml` (or choose custom `*.yml` 
 For example:
 
 ```yaml
-name: Ansible Lint # feel free to pick your own name
+name: ansible-lint
 on: [push, pull_request]
 
 jobs:
   build:
+    name: Ansible Lint # Naming the build is important to use it as a status check
     runs-on: ubuntu-latest
 
     steps:
