@@ -33,7 +33,7 @@ jobs:
 ```
 
 Due to limitations on how GitHub Actions are processing arguments, we do not
-plan to provide extra options. You will have to make use of [ansible-lint own configuration file](https://ansible-lint.readthedocs.io/en/latest/configuring/)
+plan to provide extra options. You will have to make use of [ansible-lint own configuration file](https://ansible-lint.readthedocs.io/configuring/)
 for altering its behavior.
 
 If you still want custom arguments, you can still fork the action and modify
