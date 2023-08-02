@@ -1,3 +1,8 @@
+# Notice
+
+This is unmaintained. Please use the current Github action here: https://github.com/marketplace/actions/run-ansible-lint
+
+
 # Ansible Lint for GitHub Action
 
 This action allows you to run `ansible-lint` on your codebase without having
